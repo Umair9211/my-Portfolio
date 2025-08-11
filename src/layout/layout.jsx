@@ -66,7 +66,7 @@ const Layout = () => {
         className="nav-box  text-center align-items-center d-flex justify-content-center"
         style={{ top: isUp ? "0%" : "-30%", backgroundColor: BoxClr }}
       >
-        <div className="d-flex nav-box-item flex-md-row flex-column gap-md-3 gap-1 justify-content-center  align-items-center">
+        <div className="d-flex nav-box-item flex-md-row flex-column gap-md-3 gap-2 justify-content-center  align-items-center">
           <Nav.Link
             className={`nav-link-${theme}`}
             as={NavLink}
