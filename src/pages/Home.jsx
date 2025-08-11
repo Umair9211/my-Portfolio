@@ -46,10 +46,14 @@ const Home = () => {
   };
   const [description, setDescription] = useState(descriptions.default);
 
-  const [bgColor, setBgColor] = useState("");
   const handleMouseEnter = (role) => {
-    document.body.style.background =
-      bgColors[role.toLowerCase().split(" ")[0]] || bgColors.default;
+      const colorKey = role.toLowerCase().split(" ")[0];
+  const newBg = bgColors[colorKey] || bgColors.default;
+  const newBoxClr = boxColor[colorKey] || boxColor.default;
+    setBoxClr(newBoxClr);
+    setBg(newBg);
+      setTheme(colorKey);
+
     const navBar = document.querySelector(".navBar-main");
     const profileWrapper = document.querySelector(".profile-wrapper");
     profileWrapper.style.background = "transparent";
@@ -61,7 +65,9 @@ const Home = () => {
   };
 
   const handleMouseLeave = () => {
-    document.body.style.background = bgColors.default;
+      setBoxClr(boxColor.default);
+      setBg(bgColors.default);
+   setTheme("default");
     const navBar = document.querySelector(".navBar-main");
     const profileWrapper = document.querySelector(".profile-wrapper");
     profileWrapper.style.background = "radial-gradient(circle, #e07a32fd 65%, transparent 40%)";

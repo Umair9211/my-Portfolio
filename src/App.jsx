@@ -13,31 +13,35 @@ import React, { useState, useEffect } from 'react';
 
 function App() {
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-const handleLoad = () => setLoading(false);
-    window.addEventListener('load', handleLoad);
-      return () => window.removeEventListener('load', handleLoad);
-  },[]);
+    // Show loader for exactly 2 seconds
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
 
-return (
-  <>
-    {loading ? (
-      <Loader />
-    ) : (
-      <Router>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/web" element={<Web />} />
-            <Route path="/net" element={<Network />} />
-            <Route path="/cyber" element={<Cyber />} />
-          </Route>
-        </Routes>
-      </Router>
-    )}
-  </>
-);
+    return () => clearTimeout(timer);
+  }, []);
 
+  return (
+    <>
+      {loading && <Loader />}
+      
+      {/* App always renders in background while loader is showing */}
+      <div style={{ display: loading ? 'none' : 'block' }}>
+        <Router>
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/web" element={<Web />} />
+              <Route path="/net" element={<Network />} />
+              <Route path="/cyber" element={<Cyber />} />
+            </Route>
+          </Routes>
+        </Router>
+      </div>
+    </>
+  );
 }
 
 export default App;

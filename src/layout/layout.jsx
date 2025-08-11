@@ -20,7 +20,7 @@ const Layout = () => {
   }, [location.pathname]);
 
   return (
-    <body className="body" style={{ background: bg }}>
+    <div className="body" style={{ background: bg }}>
       <nav className="navBar-main" style={{ background: bg }}>
         <Navbar expand="lg" expanded={expanded}>
           <Container className="d-flex align-items-center justify-content-center">
@@ -146,7 +146,7 @@ const Layout = () => {
           © {new Date().getFullYear()} Umair Farooq. All rights reserved.
         </div>
       </footer>
-    </body>
+    </div>
   );
 };
 
